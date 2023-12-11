@@ -13,12 +13,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Suyaa.EFCore.PostgreSQL" Version="1.8.2312.40" />
+    <PackageReference Include="Suyaa.Hosting" Version="1.11.2312.59" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\Suyaa.Hosting.Jwt\Suyaa.Hosting.Jwt.csproj" />
     <ProjectReference Include="..\..\Extensions\Suyaa.Hosting.UnitOfWork.EFCore\Suyaa.Hosting.UnitOfWork.EfCore.csproj" />
-    <ProjectReference Include="..\..\Hosting\Suyaa.Hosting\Suyaa.Hosting.csproj" />
   </ItemGroup>
 
 </Project>

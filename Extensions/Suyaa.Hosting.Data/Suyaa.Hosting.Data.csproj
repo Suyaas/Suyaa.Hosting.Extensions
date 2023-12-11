@@ -32,10 +32,7 @@
 
   <ItemGroup>
     <PackageReference Include="Suyaa.Data" Version="1.8.2312.41" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Hosting\Suyaa.Hosting.Common\Suyaa.Hosting.Common.csproj" />
+    <PackageReference Include="Suyaa.Hosting.Common" Version="1.11.2312.59" />
   </ItemGroup>
 
 </Project>
