@@ -14,7 +14,7 @@ namespace Suyaa.Hosting.EfCore.Providers
     /// </summary>
     public sealed class HostDbContextProvider : IDbContextProvider
     {
-        private readonly IEnumerable<IDescriptorDbContext> _dbContexts;
+        private readonly IEnumerable<IDefineDbContext> _dbContexts;
         private readonly IDependencyManager _dependencyManager;
 
         /// <summary>
@@ -25,14 +25,14 @@ namespace Suyaa.Hosting.EfCore.Providers
             )
         {
             _dependencyManager = dependencyManager;
-            _dbContexts = _dependencyManager.Resolves<IDescriptorDbContext>();
+            _dbContexts = _dependencyManager.Resolves<IDefineDbContext>();
         }
 
         /// <summary>
         /// 获取数据库上下文集合
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<IDescriptorDbContext> GetDbContexts()
+        public IEnumerable<IDefineDbContext> GetDbContexts()
         {
             return _dbContexts;
         }

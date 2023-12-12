@@ -41,7 +41,7 @@ namespace Suyaa.Hosting.EfCore.Helpers
             dependencyManager.Register<IDbContextFactory, HostDbContextFacotry>(Lifetimes.Singleton);
             dependencyManager.RegisterTransientImplementations<IDbContextProvider>();
             List<Type> excludeContextTypes = new List<Type>() { typeof(DescriptorTypeDbContext) };
-            dependencyManager.RegisterTransientImplementations(typeof(IDescriptorDbContext), tp => !excludeContextTypes.Contains(tp));
+            dependencyManager.RegisterTransientImplementations<IDefineDbContext>();
             //dependencyManager.Register<IDbContextWork, DbContextWork>(Lifetimes.Transient);
             //dependencyManager.Register<IDbContextWorkProvider, DbContextWorkProvider>(Lifetimes.Transient);
             //dependencyManager.Register<IDbContextWorkManager, DbContextWorkManager>(Lifetimes.Transient);
