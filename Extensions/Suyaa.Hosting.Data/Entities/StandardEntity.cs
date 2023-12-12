@@ -28,6 +28,6 @@ namespace Suyaa.Hosting.Data.Entities
         /// </summary>
         [Column]
         [Description("是否删除")]
-        public bool IsDelete { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

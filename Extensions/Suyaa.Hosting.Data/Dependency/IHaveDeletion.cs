@@ -12,6 +12,6 @@
         /// <summary>
         /// 是否删除
         /// </summary>
-        bool IsDelete { get; set; }
+        bool IsDeleted { get; set; }
     }
 }
