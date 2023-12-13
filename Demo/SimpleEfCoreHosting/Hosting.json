@@ -1,0 +1,1 @@
+﻿{"Paths":["~/libs"],"Libraries":[],"LogPath":"~/logs","IsVerboseLog":false,"IsCorsAll":false,"IsSwagger":false,"Swaggers":[{"Name":"all","Description":"All APIs","Keyword":"*"}],"IsRazorPageSupported":false,"IsControllerSupported":false,"DomainService":{"IsSupported":false,"RouteRoot":"/app"}}

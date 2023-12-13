@@ -12,7 +12,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Suyaa.EFCore.PostgreSQL" Version="1.8.2312.42" />
+    <PackageReference Include="Suyaa.EFCore.PostgreSQL" Version="1.8.2312.43" />
     <PackageReference Include="Suyaa.Hosting" Version="1.11.2312.59" />
   </ItemGroup>
 
