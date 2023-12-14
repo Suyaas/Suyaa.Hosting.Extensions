@@ -1,4 +1,5 @@
-﻿using Suyaa.Data.Dependency;
+﻿using Suyaa.Data.DbWorks.Dependency;
+using Suyaa.Data.Dependency;
 using Suyaa.Hosting.Common.Sessions.Dependency;
 using Suyaa.Hosting.UnitOfWork.Dependency;
 using System;

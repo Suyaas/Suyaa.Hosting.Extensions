@@ -1,14 +1,4 @@
-﻿using Suyaa.Data;
-using Suyaa.Data.Dependency;
-using Suyaa.Data.SimpleDbWorks;
-using Suyaa.EFCore.Contexts;
-using Suyaa.EFCore.Dependency;
-using Suyaa.Hosting.Common.DependencyInjection;
-using Suyaa.Hosting.Common.DependencyInjection.Dependency;
-using Suyaa.Hosting.Common.DependencyInjection.Helpers;
-using Suyaa.Hosting.Data.Managers;
-using Suyaa.Hosting.Data.Providers;
-using Suyaa.Hosting.EFCore.Dependency;
+﻿using Suyaa.Hosting.Common.DependencyInjection.Dependency;
 using Suyaa.Hosting.Multilingual.Helpers;
 using Suyaa.Hosting.EfCore.Helpers;
 

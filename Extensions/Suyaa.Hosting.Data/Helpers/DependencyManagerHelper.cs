@@ -1,7 +1,11 @@
 ﻿using Suyaa.Data;
+using Suyaa.Data.DbWorks;
+using Suyaa.Data.DbWorks.Dependency;
 using Suyaa.Data.Dependency;
 using Suyaa.Data.Factories;
 using Suyaa.Data.Providers;
+using Suyaa.Data.Repositories;
+using Suyaa.Data.Repositories.Dependency;
 using Suyaa.Data.SimpleDbWorks;
 using Suyaa.Hosting.Common.DependencyInjection;
 using Suyaa.Hosting.Common.DependencyInjection.Dependency;
@@ -33,10 +37,13 @@ namespace Suyaa.Hosting.Data.Helpers
             dependencyManager.RegisterTransientImplementations<IDbConnectionDescriptorProvider>();
             dependencyManager.Register<IDbConnectionDescriptorManager, DbConnectionDescriptorManager>(Lifetimes.Transient);
             // 注册作业相关
-            dependencyManager.Register<IDbWorkProvider, HostDbWorkProvider>(Lifetimes.Transient);
+            dependencyManager.Register<IDbWorkInterceptorFactory, HostDbWorkInterceptorFactory>(Lifetimes.Singleton);
+            Type typeDbWorkInterceptor = typeof(DbWorkInterceptor);
+            dependencyManager.RegisterTransientImplementations(typeof(IDbWorkInterceptor), d => d != typeDbWorkInterceptor);
+            dependencyManager.Register<IDbWorkProvider, DbWorkProvider>(Lifetimes.Transient);
             dependencyManager.Register<IDbWorkManagerProvider, HostDbWorkManagerProvider>(Lifetimes.Transient);
             dependencyManager.Register<IDbWorkManager, HostDbWorkManager>(Lifetimes.Transient);
-            dependencyManager.Register<IDbWork, DbWork>(Lifetimes.Transient);
+            //dependencyManager.Register<IDbWork, DbWork>(Lifetimes.Transient);
             // 注册数据仓库
             dependencyManager.Register(typeof(IRepository<,>), typeof(Repository<,>), Lifetimes.Transient);
             dependencyManager.Register<ISqlRepository, SqlRepository>(Lifetimes.Transient);

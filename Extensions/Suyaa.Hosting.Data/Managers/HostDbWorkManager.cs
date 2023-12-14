@@ -1,4 +1,6 @@
-﻿using Suyaa.Data.Dependency;
+﻿using Suyaa.Data.DbWorks.Dependency;
+using Suyaa.Data.Dependency;
+using Suyaa.Data.Repositories.Dependency;
 using Suyaa.Hosting.Common.DependencyInjection.Dependency;
 using Suyaa.Hosting.Common.DependencyInjection.Helpers;
 using Suyaa.Hosting.Data.Wrappers;
@@ -16,6 +18,7 @@ namespace Suyaa.Hosting.Data.Managers
         // 缓存操作异步对象
         private static readonly AsyncLocal<AsyncLocalDbWorkWrapper> _asyncLocal = new AsyncLocal<AsyncLocalDbWorkWrapper>();
         private readonly IDependencyManager _dependencyManager;
+        private readonly IDbWorkProvider _dbWorkProvider;
 
         /// <summary>
         /// 简单的数据库工作者管理器
@@ -23,11 +26,13 @@ namespace Suyaa.Hosting.Data.Managers
         public HostDbWorkManager(
             IDependencyManager dependencyManager,
             IDbFactory factory,
-            IDbConnectionDescriptorFactory dbConnectionDescriptorFactory
+            IDbConnectionDescriptorFactory dbConnectionDescriptorFactory,
+            IDbWorkProvider dbWorkProvider
             )
         {
             _dependencyManager = dependencyManager;
             Factory = factory;
+            _dbWorkProvider = dbWorkProvider;
             ConnectionDescriptor = dbConnectionDescriptorFactory.DefaultConnection;
         }
 
@@ -47,9 +52,7 @@ namespace Suyaa.Hosting.Data.Managers
         /// <returns></returns>
         public IDbWork CreateWork()
         {
-            // 释放当前作业
-            ReleaseWork();
-            var work = _dependencyManager.ResolveRequired<IDbWork>();
+            var work = _dbWorkProvider.CreateWork(this);
             SetCurrentWork(work);
             return work;
         }

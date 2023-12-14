@@ -1,4 +1,5 @@
-﻿using Suyaa.Data.Dependency;
+﻿using Suyaa.Data.DbWorks.Dependency;
+using Suyaa.Data.Dependency;
 using Suyaa.Data.Enums;
 using Suyaa.Data.Helpers;
 using Suyaa.Hosting.Common.DependencyInjection.Dependency;

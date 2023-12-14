@@ -14,6 +14,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Suyaa.Hosting.UnitOfWork.EFCore.Helpers;
 using Suyaa.Hosting.Jwt.Helpers;
+using Suyaa.Data.Dependency;
+using Suyaa.Hosting.Common.DependencyInjection;
+using Suyaa.Data.Repositories.Dependency;
 
 namespace SimpleEfCoreHosting
 {
@@ -32,8 +35,11 @@ namespace SimpleEfCoreHosting
         protected override void OnConfigureDependency(IDependencyManager dependencyManager)
         {
             base.OnConfigureDependency(dependencyManager);
-            dependencyManager.AddEfCoreUnitOfWork();
+            dependencyManager.AddDbUnitOfWork();
             dependencyManager.AddJwt();
+            // 使用自己设计的混合仓库
+            //dependencyManager.Remove(typeof(IRepository<,>));
+            //dependencyManager.Register(typeof(IRepository<,>), typeof(MixRepository<,>), Lifetimes.Transient);
         }
         protected override void OnConfigureAssembly(IList<Assembly> assemblies)
         {

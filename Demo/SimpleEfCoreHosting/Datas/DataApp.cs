@@ -1,5 +1,7 @@
 ﻿using SimpleEfCoreHosting.Entities;
+using Suyaa.Data.DbWorks.Dependency;
 using Suyaa.Data.Dependency;
+using Suyaa.Data.Repositories.Dependency;
 using Suyaa.EFCore.Dependency;
 using Suyaa.Hosting.App.Services;
 using Suyaa.Hosting.Common.Configures;
@@ -40,12 +42,12 @@ namespace SimpleEfCoreHosting.Datas
 
         public async Task<Test> GetTest()
         {
-            var dbFactory = _dependencyManager.ResolveRequired<IDbFactory>();
-            var dbContextFactory = _dependencyManager.ResolveRequired<IDbContextFactory>();
-            var workNew = _dependencyManager.ResolveRequired<IDbWork>();
-            var test = new Test();
+            //var dbFactory = _dependencyManager.ResolveRequired<IDbFactory>();
+            //var dbContextFactory = _dependencyManager.ResolveRequired<IDbContextFactory>();
+            //var workNew = _dependencyManager.ResolveRequired<IDbWork>();
+            var test = new Test() { Content = nameof(DataApp) };
             var testRepository = _dependencyManager.ResolveRequired<IRepository<Test, string>>();
-            testRepository.Insert(test);
+            await testRepository.InsertAsync(test);
             //try
             //{
 

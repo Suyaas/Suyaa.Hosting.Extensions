@@ -1,7 +1,11 @@
 ﻿using Suyaa.Data;
+using Suyaa.Data.DbWorks;
+using Suyaa.Data.DbWorks.Dependency;
 using Suyaa.Data.Dependency;
 using Suyaa.Data.Providers;
+using Suyaa.Data.Repositories.Dependency;
 using Suyaa.EFCore.Contexts;
+using Suyaa.EFCore.DbWorks;
 using Suyaa.EFCore.Dependency;
 using Suyaa.EFCore.Factories;
 using Suyaa.EFCore.Providers;
@@ -31,8 +35,10 @@ namespace Suyaa.Hosting.EfCore.Helpers
             // 使用数据库
             dependencyManager.AddData();
             // 注册作业相关
-            dependencyManager.Remove<IDbWork>();
-            dependencyManager.Register<IDbWork, EfCoreWork>(Lifetimes.Transient);
+            //dependencyManager.Remove<IDbWork>();
+            //dependencyManager.Register<IDbWork, EfCoreWork>(Lifetimes.Transient);
+            dependencyManager.Remove<IDbWorkProvider>();
+            dependencyManager.Register<IDbWorkProvider, EfCoreWorkProvider>(Lifetimes.Transient);
             //List<Type> excludeContextTypes = new List<Type>() { typeof(DescriptorTypeDbContext) };
             //dependencyManager.RegisterTransientImplementations(typeof(IDescriptorDbContext), tp => !excludeContextTypes.Contains(tp));
             //// 注册所有的 DbSet 供应商
