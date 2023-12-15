@@ -67,7 +67,8 @@ namespace Suyaa.Hosting.AutoMapper.Helpers
             });
             var mapper = configuration.CreateMapper();
             dependency.RegisterInstance<IMapper>(mapper);
-            dependency.Register<IObjectMapper, ObjectMapper>(Lifetimes.Exclusive);
+            dependency.Remove<IObjectMapper>();
+            dependency.Register<IObjectMapper, ObjectMapper>(Lifetimes.Transient);
             return dependency;
         }
     }

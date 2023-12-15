@@ -1,9 +1,12 @@
-﻿using SimpleEfCoreHosting.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SimpleEfCoreHosting.Datas.Dto;
+using SimpleEfCoreHosting.Entities;
 using Suyaa.Data.DbWorks.Dependency;
 using Suyaa.Data.Dependency;
 using Suyaa.Data.Repositories.Dependency;
 using Suyaa.EFCore.Dependency;
 using Suyaa.Hosting.App.Services;
+using Suyaa.Hosting.AutoMapper.Dependency;
 using Suyaa.Hosting.Common.Configures;
 using Suyaa.Hosting.Common.Configures.Dependency;
 using Suyaa.Hosting.Common.DependencyInjection.Dependency;
@@ -19,6 +22,7 @@ namespace SimpleEfCoreHosting.Datas
     public sealed class DataApp : DomainServiceApp
     {
         private readonly IDependencyManager _dependencyManager;
+        private readonly IObjectMapper _objectMapper;
         private readonly ILogger _logger;
 
         /// <summary>
@@ -27,10 +31,12 @@ namespace SimpleEfCoreHosting.Datas
         /// <param name="dependencyManager"></param>
         public DataApp(
             IDependencyManager dependencyManager,
+            IObjectMapper objectMapper,
             ILogger logger
             )
         {
             _dependencyManager = dependencyManager;
+            _objectMapper = objectMapper;
             _logger = logger;
         }
 
@@ -38,6 +44,13 @@ namespace SimpleEfCoreHosting.Datas
         {
             var jwtConfig = _dependencyManager.ResolveRequired<IOptionConfig<JwtConfig>>();
             return await Task.FromResult(jwtConfig.CurrentValue.TokenKey);
+        }
+
+        public async Task<List<TestOutput>> GetTests()
+        {
+            var testRepository = _dependencyManager.ResolveRequired<IRepository<Test, string>>();
+            var datas = await testRepository.Query().ToListAsync();
+            return _objectMapper.Map<List<TestOutput>>(datas);
         }
 
         public async Task<Test> GetTest()

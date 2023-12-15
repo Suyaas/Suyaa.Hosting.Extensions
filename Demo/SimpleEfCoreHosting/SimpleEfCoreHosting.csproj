@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\Suyaa.Hosting.AutoMapper\Suyaa.Hosting.AutoMapper.csproj" />
     <ProjectReference Include="..\..\Extensions\Suyaa.Hosting.Jwt\Suyaa.Hosting.Jwt.csproj" />
     <ProjectReference Include="..\..\Extensions\Suyaa.Hosting.UnitOfWork.EFCore\Suyaa.Hosting.UnitOfWork.EfCore.csproj" />
   </ItemGroup>

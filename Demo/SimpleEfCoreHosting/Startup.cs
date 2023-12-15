@@ -17,6 +17,7 @@ using Suyaa.Hosting.Jwt.Helpers;
 using Suyaa.Data.Dependency;
 using Suyaa.Hosting.Common.DependencyInjection;
 using Suyaa.Data.Repositories.Dependency;
+using Suyaa.Hosting.AutoMapper.Helpers;
 
 namespace SimpleEfCoreHosting
 {
@@ -35,8 +36,9 @@ namespace SimpleEfCoreHosting
         protected override void OnConfigureDependency(IDependencyManager dependencyManager)
         {
             base.OnConfigureDependency(dependencyManager);
-            dependencyManager.AddDbUnitOfWork();
+            dependencyManager.AddEfCoreUnitOfWork();
             dependencyManager.AddJwt();
+            dependencyManager.AddAutoMapper();
             // 使用自己设计的混合仓库
             //dependencyManager.Remove(typeof(IRepository<,>));
             //dependencyManager.Register(typeof(IRepository<,>), typeof(MixRepository<,>), Lifetimes.Transient);
