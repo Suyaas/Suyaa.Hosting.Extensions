@@ -92,5 +92,15 @@ namespace SimpleEfCoreHosting.Datas
             //}
             return await Task.FromResult(test);
         }
+
+        public async Task Update()
+        {
+            //var dbFactory = _dependencyManager.ResolveRequired<IDbFactory>();
+            //var dbContextFactory = _dependencyManager.ResolveRequired<IDbContextFactory>();
+            //var workNew = _dependencyManager.ResolveRequired<IDbWork>();
+            var test = new Test() { Content = nameof(DataApp) };
+            var testRepository = _dependencyManager.ResolveRequired<IRepository<Test, string>>();
+            await testRepository.UpdateAsync(test, d => d.Content, d => d.Id == "018c583bf26900000100000000f6d4b4");
+        }
     }
 }

@@ -36,7 +36,8 @@ namespace SimpleEfCoreHosting
         protected override void OnConfigureDependency(IDependencyManager dependencyManager)
         {
             base.OnConfigureDependency(dependencyManager);
-            dependencyManager.AddEfCoreUnitOfWork();
+            //dependencyManager.AddEfCoreUnitOfWork();
+            dependencyManager.AddDbUnitOfWork();
             dependencyManager.AddJwt();
             dependencyManager.AddAutoMapper();
             // 使用自己设计的混合仓库
