@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Suyaa.EFCore" Version="1.8.2312.49" />
+    <PackageReference Include="Suyaa.EFCore" Version="1.8.2312.50" />
   </ItemGroup>
 
   <ItemGroup>
