@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Suyaa.Hosting.Common" Version="1.11.2312.59" />
+    <PackageReference Include="Suyaa.Hosting.Common" Version="1.11.2312.60" />
   </ItemGroup>
 
 </Project>
